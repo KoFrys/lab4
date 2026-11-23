@@ -1,0 +1,257 @@
+{
+  "model_name": "Soft Voting: LogisticRegression + ExtraTrees + GradientBoosting",
+  "random_seed": 42,
+  "split": {
+    "test_size": 0.2,
+    "random_state": 42,
+    "stratify": true,
+    "train_rows": 800,
+    "test_rows": 200
+  },
+  "selected_model_test_metrics": {
+    "roc_auc": 0.8438095238095239,
+    "accuracy": 0.79,
+    "precision": 0.80625,
+    "recall": 0.9214285714285714,
+    "f1": 0.86
+  },
+  "selection_criterion": "ROC-AUC, кросс-валидация 5x2 на train-части",
+  "experiments": [
+    {
+      "name": "LR (как в ЛР3: стандартизация, C=1)",
+      "cv_roc_auc_mean": 0.7692150297619047,
+      "cv_roc_auc_std": 0.02773911534095572,
+      "test": {
+        "roc_auc": 0.8085714285714287,
+        "accuracy": 0.77,
+        "precision": 0.8012820512820513,
+        "recall": 0.8928571428571429,
+        "f1": 0.8445945945945946
+      }
+    },
+    {
+      "name": "LR (one-hot + новые признаки, C=0.05)",
+      "cv_roc_auc_mean": 0.7712053571428572,
+      "cv_roc_auc_std": 0.02048294310894298,
+      "test": {
+        "roc_auc": 0.8419047619047619,
+        "accuracy": 0.78,
+        "precision": 0.8,
+        "recall": 0.9142857142857143,
+        "f1": 0.8533333333333334
+      }
+    },
+    {
+      "name": "Random Forest (300 деревьев)",
+      "cv_roc_auc_mean": 0.7858072916666667,
+      "cv_roc_auc_std": 0.03412395870841852,
+      "test": {
+        "roc_auc": 0.8336904761904762,
+        "accuracy": 0.79,
+        "precision": 0.7951807228915663,
+        "recall": 0.9428571428571428,
+        "f1": 0.8627450980392157
+      }
+    },
+    {
+      "name": "Extra Trees (400 деревьев)",
+      "cv_roc_auc_mean": 0.7882998511904763,
+      "cv_roc_auc_std": 0.030218027533839655,
+      "test": {
+        "roc_auc": 0.8288095238095239,
+        "accuracy": 0.785,
+        "precision": 0.7904191616766467,
+        "recall": 0.9428571428571428,
+        "f1": 0.8599348534201955
+      }
+    },
+    {
+      "name": "AdaBoost (200 пней)",
+      "cv_roc_auc_mean": 0.7732886904761905,
+      "cv_roc_auc_std": 0.03197698837489663,
+      "test": {
+        "roc_auc": 0.8248214285714285,
+        "accuracy": 0.74,
+        "precision": 0.7716049382716049,
+        "recall": 0.8928571428571429,
+        "f1": 0.8278145695364238
+      }
+    },
+    {
+      "name": "Gradient Boosting (300, depth=3, lr=0.03)",
+      "cv_roc_auc_mean": 0.7765066964285715,
+      "cv_roc_auc_std": 0.027773296660812054,
+      "test": {
+        "roc_auc": 0.8328571428571429,
+        "accuracy": 0.8,
+        "precision": 0.8289473684210527,
+        "recall": 0.9,
+        "f1": 0.863013698630137
+      }
+    },
+    {
+      "name": "HistGradientBoosting",
+      "cv_roc_auc_mean": 0.7698474702380953,
+      "cv_roc_auc_std": 0.031221537181382195,
+      "test": {
+        "roc_auc": 0.8269047619047618,
+        "accuracy": 0.795,
+        "precision": 0.8193548387096774,
+        "recall": 0.9071428571428571,
+        "f1": 0.8610169491525423
+      }
+    },
+    {
+      "name": "MLP (32-16, alpha=1)",
+      "cv_roc_auc_mean": 0.7400111607142857,
+      "cv_roc_auc_std": 0.03522213391483185,
+      "test": {
+        "roc_auc": 0.7586904761904761,
+        "accuracy": 0.715,
+        "precision": 0.7985611510791367,
+        "recall": 0.7928571428571428,
+        "f1": 0.7956989247311828
+      }
+    },
+    {
+      "name": "Voting: LR + ExtraTrees + GB (выбранная)",
+      "cv_roc_auc_mean": 0.7912946428571429,
+      "cv_roc_auc_std": 0.02418355074120966,
+      "test": {
+        "roc_auc": 0.8438095238095239,
+        "accuracy": 0.79,
+        "precision": 0.80625,
+        "recall": 0.9214285714285714,
+        "f1": 0.86
+      }
+    },
+    {
+      "name": "Stacking: LR + ExtraTrees + GB",
+      "cv_roc_auc_mean": 0.7883184523809523,
+      "cv_roc_auc_std": 0.024281928785196156,
+      "test": {
+        "roc_auc": 0.8427380952380952,
+        "accuracy": 0.785,
+        "precision": 0.8129032258064516,
+        "recall": 0.9,
+        "f1": 0.8542372881355932
+      }
+    },
+    {
+      "name": "Voting без LR",
+      "cv_roc_auc_mean": 0.7883370535714286,
+      "cv_roc_auc_std": 0.02874464178978246,
+      "test": {
+        "roc_auc": 0.836547619047619,
+        "accuracy": 0.79,
+        "precision": 0.810126582278481,
+        "recall": 0.9142857142857143,
+        "f1": 0.8590604026845637
+      }
+    },
+    {
+      "name": "Voting без ExtraTrees",
+      "cv_roc_auc_mean": 0.7873325892857144,
+      "cv_roc_auc_std": 0.022643547843326124,
+      "test": {
+        "roc_auc": 0.8438095238095238,
+        "accuracy": 0.775,
+        "precision": 0.802547770700637,
+        "recall": 0.9,
+        "f1": 0.8484848484848485
+      }
+    },
+    {
+      "name": "Voting без GB",
+      "cv_roc_auc_mean": 0.7891369047619048,
+      "cv_roc_auc_std": 0.021404822374063773,
+      "test": {
+        "roc_auc": 0.8430952380952382,
+        "accuracy": 0.795,
+        "precision": 0.8,
+        "recall": 0.9428571428571428,
+        "f1": 0.8655737704918033
+      }
+    },
+    {
+      "name": "Voting без новых признаков",
+      "cv_roc_auc_mean": 0.7856770833333334,
+      "cv_roc_auc_std": 0.022784871482646653,
+      "test": {
+        "roc_auc": 0.8425,
+        "accuracy": 0.79,
+        "precision": 0.8141025641025641,
+        "recall": 0.9071428571428571,
+        "f1": 0.8581081081081081
+      }
+    }
+  ],
+  "threshold_analysis": [
+    {
+      "threshold": 0.4,
+      "roc_auc": 0.8438095238095239,
+      "accuracy": 0.785,
+      "precision": 0.7771428571428571,
+      "recall": 0.9714285714285714,
+      "f1": 0.8634920634920635
+    },
+    {
+      "threshold": 0.5,
+      "roc_auc": 0.8438095238095239,
+      "accuracy": 0.79,
+      "precision": 0.80625,
+      "recall": 0.9214285714285714,
+      "f1": 0.86
+    },
+    {
+      "threshold": 0.6,
+      "roc_auc": 0.8438095238095239,
+      "accuracy": 0.795,
+      "precision": 0.8613138686131386,
+      "recall": 0.8428571428571429,
+      "f1": 0.851985559566787
+    },
+    {
+      "threshold": 0.7,
+      "roc_auc": 0.8438095238095239,
+      "accuracy": 0.765,
+      "precision": 0.8974358974358975,
+      "recall": 0.75,
+      "f1": 0.8171206225680934
+    }
+  ],
+  "repeated_holdout_20_splits": {
+    "lr": {
+      "name": "LR (как в ЛР3)",
+      "mean": 0.7889464285714286,
+      "std": 0.02841238658991345,
+      "min": 0.7329761904761906,
+      "max": 0.8552380952380952,
+      "share_above_0_80": 0.35
+    },
+    "et": {
+      "name": "Extra Trees",
+      "mean": 0.8007261904761904,
+      "std": 0.02259864054366475,
+      "min": 0.7544047619047619,
+      "max": 0.8409523809523809,
+      "share_above_0_80": 0.55
+    },
+    "gb": {
+      "name": "Gradient Boosting",
+      "mean": 0.7936309523809524,
+      "std": 0.023917685867970405,
+      "min": 0.7496428571428572,
+      "max": 0.8386904761904761,
+      "share_above_0_80": 0.35
+    },
+    "vote": {
+      "name": "Voting (выбранная)",
+      "mean": 0.8064345238095237,
+      "std": 0.02408279119861524,
+      "min": 0.7548809523809523,
+      "max": 0.8524999999999999,
+      "share_above_0_80": 0.5
+    }
+  }
+}
